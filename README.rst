@@ -1,5 +1,3 @@
-|version| |downloads| |license| |build| |issues| |forks| |stars| |ages| |works| |badges|
-
 Table Flip Sopel extension
 --------------------------
 
