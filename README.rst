@@ -11,5 +11,6 @@ Install sopel irc bot
 Installation
 ------------
 git clone http://github.com/hemna/table-flip-sopel
-cp table-flip-sopel to ~/.sopel/modules
+edit your sopel default.cfg and add
+extra = /path/to/table-flip-sopel
 restart sopel
