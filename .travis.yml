@@ -1,0 +1,26 @@
+language: python
+python:
+- '2.7'
+- '3.5'
+addons:
+  apt:
+    packages:
+    - enchant
+install:
+- pip install -e .
+- pip install -r tests/requirements.txt
+script:
+- flake8 --ignore=E501,F401,F403 ./
+- coverage run -m py.test -v .
+- coverage report
+after_success:
+- coveralls
+deploy:
+  provider: pypi
+  user: hemna
+  password:
+    secure: D2pGbE88+/EzPL7kHWDP2ifEqwxROZijeL1aCRUtRTdLuAd9WrILF4kS7dzDyxzapP2Atdv/fdujEC+3FsWP2NqJ6BrmU7TBoy73BwKc05bpRGSQR6luzticRhKAwUpUCkgdCmw3VUDIQ344RNArwx39EW23U8KWyd7ZEalMTLnqJO1VA6WCWMjfpJTofsONL01NHG6DN4la89vDpV7u79rtz+g8JHEqQuPvgBE6mqwe+wIUWaujKo9eTjAFwHRciS1OYWI2HZ266OtFYPB8OQpQaUkMpPomirIoPI83lf+OcQOte9QyAFdYfA8oBJb2KGmCwueYIEY/hXvmNDbIe3Tvis0zpsSkXhy9L5UkbUXTOT6UXwGFaS8VA3k1jzuNDfU/JoSvyqfBb9AJeFNEfSMnWCqQUz/pY8BcG+jC2O3Z7nn+CWiTy9TtBoIzt0Y0/mFRBmfGVFH14PN7MMF7ohF4GAB1CBJltOdZjUpFvBcTysGneApcvO3IYYHAxoB4SWzQ3EXlikV8vm86CijkJ7uC6A04UrOQCJOFbrwOaDWiOZPfu5t+MXDCMSjY/MErY9evvfm7xlr4nGGT7IDWN+gR4TMHRsNWQOkqn3qy9lqyvi//VoSj5F5VFJnsLg3ONbqM0EQ00j2X1XRbuk80Voq8I2LESw0gQRJcParn0A4=
+  on:
+    tags: true
+    python: '3.5'
+  skip_existing: true
