@@ -9,5 +9,5 @@ from .tableflip import *
 
 __author__ = 'hemna'
 __email__ = 'waboring@hemna.com'
-__version__ = '0.1.1'
+__version__ = '0.1.2'
 __repo__ = 'https://github.com/hemna/sopel-tableflip'
