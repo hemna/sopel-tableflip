@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import unicode_literals, absolute_import, print_function, division
+from __future__ import unicode_literals, absolute_import
+from __future__ import print_function, division
 import random
 
-from sopel.module import commands, example, rule, NOLIMIT
+from sopel.module import commands, example, rule
 from sopel import formatting
 from sopel import logger
 
@@ -75,14 +76,13 @@ COMMAND_MAPPING = {
 
     "bear": "_bear",
     "z": "_bear",
-    }
-
+}
 
 
 # matching exactly @!
-@rule('\@\?$')
+@rule(r'\@\?$')
 def flip_help(bot, trigger):
-    #flip = "(╯°□°)╯︵ ┻━┻ ".decode("utf-8")
+    # flip = "(╯°□°)╯︵ ┻━┻ ".decode("utf-8")
     flip = formatting.color("(╯°□°)╯︵ ┻━┻ ", formatting.colors.RED)
     bot.say("Welcome to Table flipping bot.")
     bot.say(flip)
@@ -114,17 +114,15 @@ def _build_msg(trigger, flip, replace_str=None):
     else:
         return msg
 
+
 @commands("tf", "tableflip")
 @example(".tf hi #pewp")
 @example(".tf h #pewp")
 @example(".tf c #pewp")
 def tf(bot, trigger):
     """Send a table flip to a channel."""
-    #LOG.warning("Chanels list %s" % bot.channels)
-    #LOG.warning("Trigger args %s" % trigger.args)
-
     args = trigger.args[1].split(' ')
-    #LOG.warning("Command args %s" % args)
+    # LOG.warning("Command args %s" % args)
 
     try:
         tf_function = args[1]
@@ -140,23 +138,22 @@ def tf(bot, trigger):
 
 def _hello(bot, trigger):
     index = random.randint(0, len(HI_LIST)-1)
-    #flip = hi_list[index].decode("utf-8")
+    # flip = hi_list[index].decode("utf-8")
     flip = HI_LIST[index]
     msg = _build_msg(trigger, flip)
     return msg
 
 
 # matching exactly @!
-@rule('\@\!$')
+@rule(r'\@\!$')
 def hello(bot, trigger):
     bot.say(_hello(bot, trigger))
 
 
 # matching @!b
 # also appends anything after @!b to end of message
-@rule('\@\!b')
+@rule(r'\@\!b')
 def flip_battle(bot, trigger):
-    #flip = "(╯°□°)╯︵ ┻━┻ ︵ ╯(°□° ╯)".decode("utf-8")
     flip = "(╯°□°)╯︵ ┻━┻ ︵ ╯(°□° ╯)"
     msg = _build_msg(trigger, flip, replace_str="@!b")
     bot.say(msg)
@@ -168,17 +165,15 @@ def _covfefe(bot, trigger):
 
 
 # matching @!c
-@rule('\@\!c')
+@rule(r'\@\!c')
 def flip_covfefe(bot, trigger):
-    #flip = "༼ノಠل͟ಠ༽ノ ︵ ┻━┻".decode("utf-8")
     bot.say(_covfefe(bot, trigger))
 
 
 # matching @!d
 # also appends anything after @!d to end of message
-@rule('\@\!d')
+@rule(r'\@\!d')
 def flip_dude(bot, trigger):
-    #flip = "(╯°Д°）╯︵ /(.□ . )".decode("utf-8")
     flip = "(╯°Д°）╯︵ /(.□ . )"
     msg = _build_msg(trigger, flip, replace_str='@!d')
     bot.say(msg)
@@ -190,9 +185,8 @@ def _fat(bot, trigger):
 
 
 # matching @!f
-@rule('\@\!f')
+@rule(r'\@\!f')
 def flip_fat(bot, trigger):
-    #flip = "(ノ ゜Д゜)ノ ︵ ┻━┻".decode("utf-8")
     bot.say(_fat(bot, trigger))
 
 
@@ -202,9 +196,8 @@ def _finger(bot, trigger):
 
 
 # matching @!g
-@rule('\@\!g')
+@rule(r'\@\!g')
 def flip_finger(bot, trigger):
-    #flip = "╭∩╮◕ل͜◕)╭∩╮  ︵┻┻".decode("utf-8")
     bot.say(_finger(bot, trigger))
 
 
@@ -214,9 +207,8 @@ def _hercules(bot, trigger):
 
 
 # matching @!h
-@rule('\@\!h')
+@rule(r'\@\!h')
 def flip_hercules(bot, trigger):
-    #flip = "(/ .□.) ︵╰(゜Д゜)╯︵ /(.□. )".decode("utf-8")
     bot.say(_hercules(bot, trigger))
 
 
@@ -226,9 +218,8 @@ def _jedi(bot, trigger):
 
 
 # matching @!j
-@rule('\@\!j')
+@rule(r'\@\!j')
 def flip_jedi(bot, trigger):
-    #flip = "(._.) ~ ︵ ┻━┻".decode("utf-8")
     bot.say(_jedi(bot, trigger))
 
 
@@ -238,9 +229,8 @@ def _magic(bot, trigger):
 
 
 # matching @!m
-@rule('\@\!m')
+@rule(r'\@\!m')
 def flip_magic(bot, trigger):
-    #flip = "༼∩ຈل͜ຈ༽つ━☆ﾟ.*･｡ﾟ ︵ ┻━┻".decode("utf-8")
     bot.say(_magic(bot, trigger))
 
 
@@ -250,9 +240,8 @@ def _rage(bot, trigger):
 
 
 # matching @!r
-@rule('\@\!r')
+@rule(r'\@\!r')
 def flip_rage(bot, trigger):
-    #flip = "(ノಠ益ಠ)ノ彡┻━┻".decode("utf-8")
     bot.say(_rage(bot, trigger))
 
 
@@ -262,9 +251,8 @@ def _table(bot, trigger):
 
 
 # matching @!t
-@rule('\@\!t')
+@rule(r'\@\!t')
 def flip_table(bot, trigger):
-    #flip = "(╯°□°)╯︵ ┻━┻ ".decode("utf-8")
     bot.say(_table(bot, trigger))
 
 
@@ -274,7 +262,6 @@ def _bear(bot, trigger):
 
 
 # matching @!z
-@rule('\@\!z')
+@rule(r'\@\!z')
 def flip_bear(bot, trigger):
-    #flip = "ʕノ•ᴥ•ʔノ ︵ ┻━┻".decode("utf-8")
     bot.say(_bear(bot, trigger))
