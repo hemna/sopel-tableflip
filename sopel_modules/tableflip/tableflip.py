@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
+
+from __future__ import unicode_literals, absolute_import, print_function, division
 import random
 
-import sopel.module
+from sopel.module import commands, example, rule, NOLIMIT
 from sopel import formatting
 from sopel import logger
 
@@ -73,12 +75,12 @@ COMMAND_MAPPING = {
 
     "bear": "_bear",
     "z": "_bear",
-
     }
 
 
+
 # matching exactly @!
-@sopel.module.rule('\@\?$')
+@rule('\@\?$')
 def flip_help(bot, trigger):
     #flip = "(╯°□°)╯︵ ┻━┻ ".decode("utf-8")
     flip = formatting.color("(╯°□°)╯︵ ┻━┻ ", formatting.colors.RED)
@@ -112,10 +114,10 @@ def _build_msg(trigger, flip, replace_str=None):
     else:
         return msg
 
-@sopel.module.commands("tf", "tableflip")
-@sopel.module.example(".tf hi #pewp")
-@sopel.module.example(".tf h #pewp")
-@sopel.module.example(".tf c #pewp")
+@commands("tf", "tableflip")
+@example(".tf hi #pewp")
+@example(".tf h #pewp")
+@example(".tf c #pewp")
 def tf(bot, trigger):
     """Send a table flip to a channel."""
     #LOG.warning("Chanels list %s" % bot.channels)
@@ -145,14 +147,14 @@ def _hello(bot, trigger):
 
 
 # matching exactly @!
-@sopel.module.rule('\@\!$')
+@rule('\@\!$')
 def hello(bot, trigger):
     bot.say(_hello(bot, trigger))
 
 
 # matching @!b
 # also appends anything after @!b to end of message
-@sopel.module.rule('\@\!b')
+@rule('\@\!b')
 def flip_battle(bot, trigger):
     #flip = "(╯°□°)╯︵ ┻━┻ ︵ ╯(°□° ╯)".decode("utf-8")
     flip = "(╯°□°)╯︵ ┻━┻ ︵ ╯(°□° ╯)"
@@ -166,7 +168,7 @@ def _covfefe(bot, trigger):
 
 
 # matching @!c
-@sopel.module.rule('\@\!c')
+@rule('\@\!c')
 def flip_covfefe(bot, trigger):
     #flip = "༼ノಠل͟ಠ༽ノ ︵ ┻━┻".decode("utf-8")
     bot.say(_covfefe(bot, trigger))
@@ -174,7 +176,7 @@ def flip_covfefe(bot, trigger):
 
 # matching @!d
 # also appends anything after @!d to end of message
-@sopel.module.rule('\@\!d')
+@rule('\@\!d')
 def flip_dude(bot, trigger):
     #flip = "(╯°Д°）╯︵ /(.□ . )".decode("utf-8")
     flip = "(╯°Д°）╯︵ /(.□ . )"
@@ -188,7 +190,7 @@ def _fat(bot, trigger):
 
 
 # matching @!f
-@sopel.module.rule('\@\!f')
+@rule('\@\!f')
 def flip_fat(bot, trigger):
     #flip = "(ノ ゜Д゜)ノ ︵ ┻━┻".decode("utf-8")
     bot.say(_fat(bot, trigger))
@@ -200,7 +202,7 @@ def _finger(bot, trigger):
 
 
 # matching @!g
-@sopel.module.rule('\@\!g')
+@rule('\@\!g')
 def flip_finger(bot, trigger):
     #flip = "╭∩╮◕ل͜◕)╭∩╮  ︵┻┻".decode("utf-8")
     bot.say(_finger(bot, trigger))
@@ -212,7 +214,7 @@ def _hercules(bot, trigger):
 
 
 # matching @!h
-@sopel.module.rule('\@\!h')
+@rule('\@\!h')
 def flip_hercules(bot, trigger):
     #flip = "(/ .□.) ︵╰(゜Д゜)╯︵ /(.□. )".decode("utf-8")
     bot.say(_hercules(bot, trigger))
@@ -224,7 +226,7 @@ def _jedi(bot, trigger):
 
 
 # matching @!j
-@sopel.module.rule('\@\!j')
+@rule('\@\!j')
 def flip_jedi(bot, trigger):
     #flip = "(._.) ~ ︵ ┻━┻".decode("utf-8")
     bot.say(_jedi(bot, trigger))
@@ -236,7 +238,7 @@ def _magic(bot, trigger):
 
 
 # matching @!m
-@sopel.module.rule('\@\!m')
+@rule('\@\!m')
 def flip_magic(bot, trigger):
     #flip = "༼∩ຈل͜ຈ༽つ━☆ﾟ.*･｡ﾟ ︵ ┻━┻".decode("utf-8")
     bot.say(_magic(bot, trigger))
@@ -248,7 +250,7 @@ def _rage(bot, trigger):
 
 
 # matching @!r
-@sopel.module.rule('\@\!r')
+@rule('\@\!r')
 def flip_rage(bot, trigger):
     #flip = "(ノಠ益ಠ)ノ彡┻━┻".decode("utf-8")
     bot.say(_rage(bot, trigger))
@@ -260,7 +262,7 @@ def _table(bot, trigger):
 
 
 # matching @!t
-@sopel.module.rule('\@\!t')
+@rule('\@\!t')
 def flip_table(bot, trigger):
     #flip = "(╯°□°)╯︵ ┻━┻ ".decode("utf-8")
     bot.say(_table(bot, trigger))
@@ -272,7 +274,7 @@ def _bear(bot, trigger):
 
 
 # matching @!z
-@sopel.module.rule('\@\!z')
+@rule('\@\!z')
 def flip_bear(bot, trigger):
     #flip = "ʕノ•ᴥ•ʔノ ︵ ┻━┻".decode("utf-8")
     bot.say(_bear(bot, trigger))
