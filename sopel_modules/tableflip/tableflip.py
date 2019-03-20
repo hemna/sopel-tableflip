@@ -137,7 +137,7 @@ def tf(bot, trigger):
 
 
 def _hello(bot, trigger):
-    index = random.randint(0, len(HI_LIST)-1)
+    index = random.randint(0, len(HI_LIST) - 1)
     # flip = hi_list[index].decode("utf-8")
     flip = HI_LIST[index]
     msg = _build_msg(trigger, flip)
